@@ -1,0 +1,130 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-app), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
+
+  --color-canvas: #f4f4ef;
+  --color-surface: #ffffff;
+  --color-surface-sunken: #eeeee8;
+  --color-ink: #111310;
+  --color-ink-soft: #5a5f54;
+  --color-ink-faint: #8b9086;
+  --color-line: #e2e2d9;
+  --color-line-strong: #c9c9bd;
+
+  --color-accent: #d7f24b;
+  --color-accent-deep: #b6d21f;
+  --color-accent-ink: #17190a;
+
+  --color-run: #2f6bff;
+  --color-gym: #ff5a3c;
+  --color-yoga: #7c5cff;
+  --color-danger: #d92d20;
+
+  --radius-card: 14px;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-canvas);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizelegibility;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-ink);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  ::selection {
+    background: var(--color-accent);
+    color: var(--color-accent-ink);
+  }
+
+  input,
+  select,
+  textarea,
+  button {
+    font: inherit;
+  }
+
+  .tnum {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@layer components {
+  .card {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-line);
+    border-radius: var(--radius-card);
+  }
+
+  .surface-sunken {
+    background-color: var(--color-surface-sunken);
+  }
+
+  .hairline {
+    border-color: var(--color-line);
+  }
+
+  .scroll-x {
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    overflow-x: auto;
+  }
+
+  .scroll-x::-webkit-scrollbar {
+    height: 6px;
+  }
+
+  .scroll-x::-webkit-scrollbar-thumb {
+    background: var(--color-line-strong);
+    border-radius: 999px;
+  }
+
+  .skeleton {
+    background: linear-gradient(
+      90deg,
+      var(--color-surface-sunken) 25%,
+      #f7f7f2 37%,
+      var(--color-surface-sunken) 63%
+    );
+    background-size: 400% 100%;
+    animation: 1.4s infinite ft-shimmer;
+  }
+
+  .shimmer-key {
+    animation: 1.4s infinite ft-shimmer;
+  }
+}
+
+@keyframes ft-shimmer {
+  0% {
+    background-position: 100%;
+  }
+
+  100% {
+    background-position: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  :before,
+  :after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.001ms !important;
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
