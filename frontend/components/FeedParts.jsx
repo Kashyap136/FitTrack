@@ -99,20 +99,22 @@ function MyStats() {
   ];
 
   return (
-    <div className="grid grid-cols-2 gap-2.5 sm:grid-cols-4">
-      {stats.map((stat) => (
-        <div
-          key={stat.label}
-          className="rounded-xl border border-line bg-surface-sunken p-3 min-w-[72px] sm:min-w-0 flex flex-col items-center gap-1"
-        >
-          <p className="text-xs uppercase tracking-wide text-ink-soft leading-tight text-center w-full">
-            {stat.label}
-          </p>
-          <p className="tnum text-base font-semibold sm:text-lg leading-none whitespace-nowrap">
-            {stat.value}
-          </p>
-        </div>
-      ))}
+    <div className="@container">
+      <div className="grid grid-cols-2 gap-2.5 @md:grid-cols-4">
+        {stats.map((stat) => (
+          <div
+            key={stat.label}
+            className="flex min-w-0 flex-col items-center justify-between gap-1 rounded-xl border border-line bg-surface-sunken p-3"
+          >
+            <p className="w-full text-center text-xs uppercase leading-tight tracking-wide text-ink-soft">
+              {stat.label}
+            </p>
+            <p className="tnum whitespace-nowrap text-base font-semibold leading-none @md:text-lg">
+              {stat.value}
+            </p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
